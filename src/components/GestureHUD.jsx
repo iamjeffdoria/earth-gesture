@@ -1,9 +1,8 @@
-import { useExplode, useRotateY, useZoom } from '../store/gestureStore'
+import { useRotateY, useZoom } from '../store/gestureStore'
 
 export default function GestureHUD() {
   const rotateY = useRotateY()
   const zoom = useZoom()
-  const explode = useExplode()
 
   return (
     <div style={{
@@ -19,13 +18,8 @@ export default function GestureHUD() {
     }}>
       <p>✋ Move hand → Rotate</p>
       <p>🤏 Pinch → Zoom</p>
-      <p>🖐️ Open palm → Explode</p>
-
       <p style={{ marginTop: 8, color: '#aaa' }}>Rotate Y: {rotateY.toFixed(2)}</p>
       <p style={{ color: '#aaa' }}>Zoom: {zoom}</p>
-      <p style={{ color: explode ? '#ff4444' : '#aaa' }}>
-        Explode: {explode ? '💥 BOOM' : 'off'}
-      </p>
     </div>
   )
 }

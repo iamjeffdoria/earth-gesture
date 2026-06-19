@@ -26,21 +26,5 @@ export function interpretGesture(landmarks) {
 
   const zoom = fingersSpreading ? 0 : pinchDist < 0.05 ? 1 : pinchDist > 0.2 ? -1 : 0
 
-  // PIP joints (middle knuckles)
-  const indexPIP  = hand[6]
-  const middlePIP = hand[10]
-  const ringPIP   = hand[14]
-  const pinkyPIP  = hand[18]
-
-  // Curled = tip is below its own PIP joint (pinch keeps index tip UP toward thumb)
-  const indexCurled  = indexTip.y  > indexPIP.y  + 0.02
-  const middleCurled = middleTip.y > middlePIP.y + 0.02
-  const ringCurled   = ringTip.y   > ringPIP.y   + 0.02
-  const pinkyCurled  = pinkyTip.y  > pinkyPIP.y  + 0.02
-
-  const notPinching = pinchDist > 0.08
-
-  const explode = indexCurled && middleCurled && ringCurled && pinkyCurled && notPinching
-
-  return { rotateX, rotateY, zoom, explode }
-}
+    return { rotateX, rotateY, zoom }
+  }
